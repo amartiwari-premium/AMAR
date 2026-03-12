@@ -1,14 +1,16 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Amar Premium Store</title>
-
-<style>
+<title>Amar Premium Store</title><style>
 body{
 font-family: Arial;
 margin:0;
 background:#f4f1ec;
+}
+
+.dark{
+background:#111;
+color:white;
 }
 
 header{
@@ -101,227 +103,246 @@ max-width:400px;
 border-radius:10px;
 }
 
-</style>
-</head>
-<body>
+.search{
+margin-bottom:20px;
+}
 
-<header>
+</style></head><body><header>
 Amar Premium Store ⭐⭐⭐⭐⭐
-</header>
-
-<div class="container">
-
-<!-- COFFEE -->
-<div class="product">
+<br>
+<button onclick="toggleDark()">🌙 Dark Mode</button>
+</header><div class="container"><input class="search" type="text" id="search" placeholder="Search product..." onkeyup="searchProduct()"><!-- COFFEE --><div class="product">
 <h2>Amar Coffee Powder (450gm)</h2>
 <img src="product.png">
 <p>100% Natural • Good For Health ⭐⭐⭐⭐⭐</p>
-<p class="price">₹12999</p>
-<input type="number" id="qty1" value="1" min="1" onchange="updateTotal(12999,'qty1','total1')">
-<p>Total: ₹<span id="total1">12999</span></p>
-<button onclick="openForm('Coffee Powder',12999,'450gm','qty1')">Pay Now</button>
+<p class="price">₹12999</p><input type="number" id="qty1" value="1" min="1" onchange="updateTotal(12999,'qty1','total1')">
+<p>Total: ₹<span id="total1">12999</span></p><button onclick="openForm('Coffee Powder',12999,'450gm','qty1')">Pay Now</button>
 
-<div id="reviews1"></div>
-
-<h4>Add Review</h4>
+<div id="reviews1"></div><h4>Add Review</h4>
 <input type="text" id="name1" placeholder="Your Name">
-<textarea id="text1" placeholder="Write Review"></textarea>
-<select id="rating1">
+<textarea id="text1" placeholder="Write Review"></textarea><select id="rating1">
 <option>⭐⭐⭐⭐⭐</option>
 <option>⭐⭐⭐⭐</option>
 <option>⭐⭐⭐</option>
 <option>⭐⭐</option>
 <option>⭐</option>
-</select>
-<button onclick="addReview('reviews1','name1','text1','rating1')">Submit Review</button>
-</div>
+</select><button onclick="addReview('reviews1','name1','text1','rating1')">Submit Review</button>
 
+</div><!-- KALANAMAK --><div class="product"><h2>Amar Kalanamak Rice (5kg)</h2><img src="kalanamak.png"><p>100% Natural • Good For Health ⭐⭐⭐⭐⭐</p><p class="price">₹8999</p><input type="number" id="qty2" value="1" min="1" onchange="updateTotal(8999,'qty2','total2')"><p>Total: ₹<span id="total2">8999</span></p><button onclick="openForm('Kalanamak Rice',8999,'5kg','qty2')">Pay Now</button>
 
-<!-- KALANAMAK -->
-<div class="product">
-<h2>Amar Kalanamak Rice (5kg)</h2>
-<img src="kalanamak.png">
-<p>100% Natural • Good For Health ⭐⭐⭐⭐⭐</p>
-<p class="price">₹8999</p>
-<input type="number" id="qty2" value="1" min="1" onchange="updateTotal(8999,'qty2','total2')">
-<p>Total: ₹<span id="total2">8999</span></p>
-<button onclick="openForm('Kalanamak Rice',8999,'5kg','qty2')">Pay Now</button>
+<div id="reviews2"></div><h4>Add Review</h4><input type="text" id="name2" placeholder="Your Name"><textarea id="text2" placeholder="Write Review"></textarea><select id="rating2"><option>⭐⭐⭐⭐⭐</option><option>⭐⭐⭐⭐</option><option>⭐⭐⭐</option><option>⭐⭐</option><option>⭐</option></select><button onclick="addReview('reviews2','name2','text2','rating2')">Submit Review</button>
 
-<div id="reviews2"></div>
+</div><!-- BASMATI --><div class="product"><h2>Amar Basmati Rice (5kg)</h2><img src="basmati.png"><p>100% Natural • Good For Health ⭐⭐⭐⭐⭐</p><p class="price">₹6999</p><input type="number" id="qty3" value="1" min="1" onchange="updateTotal(6999,'qty3','total3')"><p>Total: ₹<span id="total3">6999</span></p><button onclick="openForm('Basmati Rice',6999,'5kg','qty3')">Pay Now</button>
 
-<h4>Add Review</h4>
-<input type="text" id="name2" placeholder="Your Name">
-<textarea id="text2" placeholder="Write Review"></textarea>
-<select id="rating2">
-<option>⭐⭐⭐⭐⭐</option>
-<option>⭐⭐⭐⭐</option>
-<option>⭐⭐⭐</option>
-<option>⭐⭐</option>
-<option>⭐</option>
-</select>
-<button onclick="addReview('reviews2','name2','text2','rating2')">Submit Review</button>
-</div>
+<div id="reviews3"></div><h4>Add Review</h4><input type="text" id="name3" placeholder="Your Name"><textarea id="text3" placeholder="Write Review"></textarea><select id="rating3"><option>⭐⭐⭐⭐⭐</option><option>⭐⭐⭐⭐</option><option>⭐⭐⭐</option><option>⭐⭐</option><option>⭐</option></select><button onclick="addReview('reviews3','name3','text3','rating3')">Submit Review</button>
 
+</div><h3>Track / Cancel Order</h3><input type="text" id="trackId" placeholder="Enter Order ID"><button onclick="trackOrder()">Track</button>
 
-<!-- BASMATI -->
-<div class="product">
-<h2>Amar Basmati Rice (5kg)</h2>
-<img src="basmati.png">
-<p>100% Natural • Good For Health ⭐⭐⭐⭐⭐</p>
-<p class="price">₹6999</p>
-<input type="number" id="qty3" value="1" min="1" onchange="updateTotal(6999,'qty3','total3')">
-<p>Total: ₹<span id="total3">6999</span></p>
-<button onclick="openForm('Basmati Rice',6999,'5kg','qty3')">Pay Now</button>
-
-<div id="reviews3"></div>
-
-<h4>Add Review</h4>
-<input type="text" id="name3" placeholder="Your Name">
-<textarea id="text3" placeholder="Write Review"></textarea>
-<select id="rating3">
-<option>⭐⭐⭐⭐⭐</option>
-<option>⭐⭐⭐⭐</option>
-<option>⭐⭐⭐</option>
-<option>⭐⭐</option>
-<option>⭐</option>
-</select>
-<button onclick="addReview('reviews3','name3','text3','rating3')">Submit Review</button>
-</div>
-
-
-<!-- TRACK -->
-<h3>Track / Cancel Order</h3>
-<input type="text" id="trackId" placeholder="Enter Order ID">
-<button onclick="trackOrder()">Track</button>
 <button onclick="cancelOrder()">Cancel</button>
-<div id="trackResult"></div>
 
-</div>
+<div id="trackResult"></div><h3>My Orders</h3><button onclick="showOrders()">Show My Orders</button>
 
+<div id="orderList"></div></div><div class="popup" id="paymentPopup"><div class="popup-content"><h3>Customer Details</h3><input type="text" id="custName" placeholder="Name"><input type="text" id="custPhone" placeholder="Phone"><input type="email" id="custEmail" placeholder="Email"><textarea id="custAddress" placeholder="Address"></textarea><p>Scan & Pay</p><img src="qr.png" width="100%"><p>UPI: vishaltiwari8960@ptaxis</p><button onclick="confirmPayment()">I Have Paid</button>
 
-<!-- PAYMENT POPUP -->
-<div class="popup" id="paymentPopup">
-<div class="popup-content">
-<h3>Customer Details</h3>
-<input type="text" id="custName" placeholder="Name">
-<input type="text" id="custPhone" placeholder="Phone">
-<input type="email" id="custEmail" placeholder="Email">
-<textarea id="custAddress" placeholder="Address"></textarea>
-
-<p>Scan & Pay</p>
-<img src="qr.png" width="100%">
-<p>UPI: vishaltiwari8960@ptaxis</p>
-
-<button onclick="confirmPayment()">I Have Paid</button>
 <button onclick="closePopup()">Close</button>
-</div>
-</div>
 
-
-<div class="contact">
-<h3>Contact Us</h3>
-<p>📞 9721770053</p>
-<p>📧 vishaltiwarisidd@gmail.com</p>
-</div>
-
-
-<script>
+</div></div><div class="contact"><h3>Contact Us</h3><p>📞 9721770053</p><p>📧 vishaltiwarisidd@gmail.com</p></div><script>
 
 let currentProduct,currentPrice,currentWeight,currentQty;
 
 function updateTotal(price,qtyId,totalId){
+
 let qty=document.getElementById(qtyId).value;
+
 document.getElementById(totalId).innerText=price*qty;
+
 }
 
 function openForm(product,price,weight,qtyId){
+
 currentProduct=product;
+
 currentPrice=price;
+
 currentWeight=weight;
+
 currentQty=document.getElementById(qtyId).value;
+
 document.getElementById("paymentPopup").style.display="flex";
+
 }
 
 function closePopup(){
+
 document.getElementById("paymentPopup").style.display="none";
+
 }
 
 function confirmPayment(){
 
 let name=document.getElementById("custName").value;
+
 let phone=document.getElementById("custPhone").value;
+
 let address=document.getElementById("custAddress").value;
 
 if(name==""||phone==""||address==""){
+
 alert("Fill all details");
+
 return;
+
 }
 
-let total=currentPrice*currentQty;
+let delivery=50;
+
+let total=(currentPrice*currentQty)+delivery;
+
 let orderId="ORD"+Math.floor(Math.random()*100000);
 
 let orderData={
+
 id:orderId,
+
 product:currentProduct,
+
 weight:currentWeight,
+
 quantity:currentQty,
+
 total:total,
+
 status:"Processing"
+
 };
 
 localStorage.setItem(orderId,JSON.stringify(orderData));
 
 let message="Order ID:"+orderId+
+
 "\nProduct:"+currentProduct+
+
 "\nWeight:"+currentWeight+
+
 "\nQty:"+currentQty+
+
+"\nDelivery:₹"+delivery+
+
 "\nTotal:₹"+total;
 
 window.location.href="sms:9721770053?body="+encodeURIComponent(message);
 
+window.open("https://wa.me/919721770053?text="+encodeURIComponent(message));
+
 alert("Order Placed! Your Order ID: "+orderId);
 
 closePopup();
+
 }
 
 function trackOrder(){
+
 let id=document.getElementById("trackId").value;
+
 let order=localStorage.getItem(id);
+
 if(order){
+
 let data=JSON.parse(order);
+
 document.getElementById("trackResult").innerHTML=
+
 "Product:"+data.product+"<br>Status:"+data.status+"<br>Total:₹"+data.total;
+
 }else{
+
 document.getElementById("trackResult").innerHTML="Order Not Found";
+
 }
+
 }
 
 function cancelOrder(){
+
 let id=document.getElementById("trackId").value;
+
 let order=localStorage.getItem(id);
+
 if(order){
+
 let data=JSON.parse(order);
+
 data.status="Cancelled";
+
 localStorage.setItem(id,JSON.stringify(data));
+
 document.getElementById("trackResult").innerHTML="Order Cancelled";
+
 }
+
 }
 
 function addReview(divId,nameId,textId,ratingId){
+
 let name=document.getElementById(nameId).value;
+
 let text=document.getElementById(textId).value;
+
 let rating=document.getElementById(ratingId).value;
 
 if(name==""||text==""){
+
 alert("Write review");
+
 return;
+
 }
 
 let div=document.getElementById(divId);
+
 div.innerHTML+="<div class='review-box'><b>"+name+"</b>: "+text+" "+rating+"</div>";
+
 }
 
-</script>
+function searchProduct(){
 
-</body>
+let input=document.getElementById("search").value.toLowerCase();
+
+let items=document.getElementsByClassName("product");
+
+for(let i=0;i<items.length;i++){
+
+let text=items[i].innerText.toLowerCase();
+
+items[i].style.display=text.includes(input)?"block":"none";
+
+}
+
+}
+
+function toggleDark(){
+
+document.body.classList.toggle("dark");
+
+}
+
+function showOrders(){
+
+let orders="";
+
+for(let i=0;i<localStorage.length;i++){
+
+let key=localStorage.key(i);
+
+let data=JSON.parse(localStorage.getItem(key));
+
+orders+="Order:"+data.id+" | "+data.product+" | ₹"+data.total+"<br>";
+
+}
+
+document.getElementById("orderList").innerHTML=orders;
+
+}
+
+</script></body>
 </html>
