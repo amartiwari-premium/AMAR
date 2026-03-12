@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html><html>
 <head><meta name="viewport" content="width=device-width, initial-scale=1"><title>Amar Premium Store</title><style>
 
@@ -12,7 +14,6 @@ background:#4b2e2e;
 color:white;
 padding:15px;
 text-align:center;
-font-size:22px;
 }
 
 .container{
@@ -63,13 +64,18 @@ text-align:center;
 margin-top:40px;
 }
 
-</style></head><body><header>Amar Premium Store</header><div class="container"><!-- REGISTER --><div id="register" class="page"><h3>Register</h3><input placeholder="Full Name"><input placeholder="Phone Number"><input placeholder="Password"><button onclick="show('otp')">Register</button>
+nav a{
+margin:5px;
+color:white;
+text-decoration:none;
+}
 
-<p>Already account? <a href="#" onclick="show('login')">Login</a></p></div><!-- OTP --><div id="otp" class="page"><h3>OTP Verification</h3><p>Demo OTP: 1234</p><input id="otpbox" placeholder="Enter OTP"><button onclick="verifyOTP()">Verify</button>
+</style></head><body><header><div>★★★★★</div><h2>Amar Premium Store</h2><div>★★★★★</div><nav><a href="cart.html">Cart</a> |
+<a href="orders.html">Orders</a> |
+<a href="history.html">History</a> |
+<a href="track.html">Track</a>
 
-</div><!-- LOGIN --><div id="login" class="page"><h3>Login</h3><input placeholder="Phone"><input placeholder="Password"><button onclick="show('home')">Login</button>
-
-<p>No account? <a href="#" onclick="show('register')">Register</a></p></div><!-- HOME --><div id="home" class="page"><h2>Products</h2><div class="card"><img src="product.png"><h3>Coffee Powder</h3><p>₹299</p><label>Quantity</label>
+</nav></header><div class="container"><div id="home" class="page"><h2>Products</h2><div class="card"><img src="product.png"><h3>Coffee Powder</h3><p>₹299</p><label>Quantity</label>
 
 <input type="number" value="1" min="1"><button onclick="pay()">Pay Now</button>
 
@@ -83,9 +89,9 @@ margin-top:40px;
 
 </div><h3>Customer Reviews</h3><input id="rname" placeholder="Your Name"><textarea id="rtext" placeholder="Write Review"></textarea><button onclick="addReview()">Submit Review</button>
 
-<div id="reviews"></div></div><!-- ADDRESS --><div id="address" class="page"><h3>Delivery Address</h3><input placeholder="Full Name"><input placeholder="Phone"><textarea placeholder="Full Address"></textarea><button onclick="show('payment')">Continue Payment</button>
+<div id="reviews"></div></div><div id="address" class="page"><h3>Delivery Address</h3><input placeholder="Full Name"><input placeholder="Phone"><textarea placeholder="Full Address"></textarea><button onclick="show('payment')">Continue Payment</button>
 
-</div><!-- PAYMENT --><div id="payment" class="page"><h3>Scan QR and Pay</h3><img src="qr.png" width="200"><br><br>
+</div><div id="payment" class="page"><h3>Scan QR and Pay</h3><img src="qr.png" width="200"><br><br>
 
 <button onclick="paid()">I Have Paid</button>
 
@@ -99,21 +105,7 @@ document.getElementById(p).style.display="block"
 
 }
 
-show("register")
-
-function verifyOTP(){
-
-if(document.getElementById("otpbox").value=="1234"){
-
 show("home")
-
-}else{
-
-alert("Wrong OTP")
-
-}
-
-}
 
 function pay(){
 
@@ -122,6 +114,11 @@ show("address")
 }
 
 function paid(){
+
+let msg = "New Order Received - Amar Premium Store"
+
+window.location.href =
+"sms:9721770053?body=" + encodeURIComponent(msg)
 
 alert("Payment Confirmed!")
 
@@ -142,4 +139,3 @@ box.innerHTML += "<p><b>"+name+"</b>: "+text+"</p>"
 }
 
 </script></body></html>
-
