@@ -1,16 +1,9 @@
-<!DOCTYPE html><html>
-<head><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Amar Premium Store</title><style>
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Amar Premium Store</title><style>
 
 body{
 font-family:Arial;
 margin:0;
 background:#f4f1ec;
-}
-
-.dark{
-background:#111;
-color:white;
 }
 
 header{
@@ -22,9 +15,9 @@ font-size:22px;
 }
 
 .container{
-padding:15px;
 max-width:900px;
 margin:auto;
+padding:15px;
 }
 
 .product{
@@ -35,9 +28,9 @@ border-radius:10px;
 box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
 
-.price{
-color:#b12704;
-font-weight:bold;
+.product img{
+width:100%;
+border-radius:10px;
 }
 
 button{
@@ -47,6 +40,7 @@ border:none;
 padding:8px 15px;
 border-radius:5px;
 cursor:pointer;
+margin-top:5px;
 }
 
 input,textarea,select{
@@ -83,151 +77,132 @@ max-width:400px;
 border-radius:10px;
 }
 
-.toast{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#333;
-color:white;
-padding:10px;
-border-radius:5px;
+.panel{
+background:white;
+padding:15px;
+border-radius:10px;
+margin-bottom:20px;
 }
 
-</style></head><body><!-- REGISTER PAGE --><div id="registerPage" style="position:fixed;top:0;left:0;width:100%;height:100%;background:white;display:flex;justify-content:center;align-items:center;flex-direction:column;z-index:9999;"><h2>Register To Enter Amar Premium Store</h2><input type="text" id="regName" placeholder="Name">
-<input type="text" id="regPhone" placeholder="Phone"><button onclick="registerUser()">Register</button>
+</style></head><body><!-- REGISTER --><div id="registerPage" style="position:fixed;top:0;left:0;width:100%;height:100%;background:white;display:flex;justify-content:center;align-items:center;flex-direction:column;z-index:9999"><h2>Register</h2><input id="phone" placeholder="Phone number"><button onclick="sendOTP()">Send OTP</button>
 
-</div><header>Amar Premium Store ⭐⭐⭐⭐⭐
+<div id="otpBox" style="display:none"><input id="otpInput" placeholder="Enter OTP"><button onclick="verifyOTP()">Verify</button>
 
-<br><button onclick="toggleDark()">Dark Mode</button>
+</div></div><header>Amar Premium Store ⭐⭐⭐⭐⭐
 
-</header><div class="container"><input type="text" id="search" placeholder="Search product..." onkeyup="searchProduct()"><h3>Cart</h3><div id="cartList"></div><hr><div class="product"><h2>Amar Coffee Powder (450gm)</h2><p>100% Natural • Good For Health ⭐⭐⭐⭐⭐</p><p class="price">₹12999</p><input type="number" id="qty1" value="1" min="1" onchange="updateTotal(12999,'qty1','total1')"><p>Total: ₹<span id="total1">12999</span></p><button onclick="addToCart('Coffee Powder',12999)">Add To Cart</button>
+</header><div class="container"><input id="search" placeholder="Search product..." onkeyup="searchProduct()"><div class="panel"><h3>My Panel</h3><button onclick="showCart()">My Cart</button>
 
-<button onclick="openForm('Coffee Powder',12999,'450gm','qty1')">Pay Now</button>
+<button onclick="showOrders()">My Orders</button>
 
-<div id="reviews1"></div><input type="text" id="name1" placeholder="Name">
-<textarea id="text1" placeholder="Review"></textarea><select id="rating1">
-<option>⭐⭐⭐⭐⭐</option>
+<div id="panelResult"></div></div><!-- PRODUCT 1 --><div class="product"><img src="https://images.unsplash.com/photo-1587735243615-c03f25aaff15"><h2>Amar Coffee Powder (450gm)</h2><p>100% Natural • Good For Health ⭐⭐⭐⭐⭐</p><p>₹12999</p><input type="number" id="qty1" value="1"><button onclick="addCart('Coffee Powder',12999,'qty1')">Add Cart</button>
+
+<button onclick="openForm('Coffee Powder',12999,'qty1')">Pay Now</button>
+
+<div id="rev1"></div><input id="n1" placeholder="Name"><textarea id="t1" placeholder="Review"></textarea><select id="r1"><option>⭐⭐⭐⭐⭐</option>
 <option>⭐⭐⭐⭐</option>
 <option>⭐⭐⭐</option>
 <option>⭐⭐</option>
-<option>⭐</option>
-</select><button onclick="addReview('reviews1','name1','text1','rating1')">Submit Review</button>
+<option>⭐</option></select><button onclick="addReview('rev1','n1','t1','r1')">Submit</button>
 
-</div><div class="product"><h2>Amar Kalanamak Rice (5kg)</h2><p>100% Natural • Good For Health ⭐⭐⭐⭐⭐</p><p class="price">₹8999</p><input type="number" id="qty2" value="1" min="1" onchange="updateTotal(8999,'qty2','total2')"><p>Total: ₹<span id="total2">8999</span></p><button onclick="addToCart('Kalanamak Rice',8999)">Add To Cart</button>
+</div><!-- PRODUCT 2 --><div class="product"><img src="https://images.unsplash.com/photo-1604908177522-432c7fbc7b40"><h2>Amar Kalanamak Rice (5kg)</h2><p>100% Natural • Good For Health ⭐⭐⭐⭐⭐</p><p>₹8999</p><input type="number" id="qty2" value="1"><button onclick="addCart('Kalanamak Rice',8999,'qty2')">Add Cart</button>
 
-<button onclick="openForm('Kalanamak Rice',8999,'5kg','qty2')">Pay Now</button>
+<button onclick="openForm('Kalanamak Rice',8999,'qty2')">Pay Now</button>
 
-<div id="reviews2"></div><input type="text" id="name2" placeholder="Name">
-<textarea id="text2" placeholder="Review"></textarea><select id="rating2">
-<option>⭐⭐⭐⭐⭐</option>
-<option>⭐⭐⭐⭐</option>
-<option>⭐⭐⭐</option>
-<option>⭐⭐</option>
-<option>⭐</option>
-</select><button onclick="addReview('reviews2','name2','text2','rating2')">Submit Review</button>
+</div><!-- PRODUCT 3 --><div class="product"><img src="https://images.unsplash.com/photo-1586201375761-83865001e17b"><h2>Amar Basmati Rice (5kg)</h2><p>100% Natural • Good For Health ⭐⭐⭐⭐⭐</p><p>₹6999</p><input type="number" id="qty3" value="1"><button onclick="addCart('Basmati Rice',6999,'qty3')">Add Cart</button>
 
-</div><div class="product"><h2>Amar Basmati Rice (5kg)</h2><p>100% Natural • Good For Health ⭐⭐⭐⭐⭐</p><p class="price">₹6999</p><input type="number" id="qty3" value="1" min="1" onchange="updateTotal(6999,'qty3','total3')"><p>Total: ₹<span id="total3">6999</span></p><button onclick="addToCart('Basmati Rice',6999)">Add To Cart</button>
+<button onclick="openForm('Basmati Rice',6999,'qty3')">Pay Now</button>
 
-<button onclick="openForm('Basmati Rice',6999,'5kg','qty3')">Pay Now</button>
+</div><h3>Track / Cancel Order</h3><input id="trackId" placeholder="Order ID"><button onclick="trackOrder()">Track</button>
 
-<div id="reviews3"></div><input type="text" id="name3" placeholder="Name">
-<textarea id="text3" placeholder="Review"></textarea><select id="rating3">
-<option>⭐⭐⭐⭐⭐</option>
-<option>⭐⭐⭐⭐</option>
-<option>⭐⭐⭐</option>
-<option>⭐⭐</option>
-<option>⭐</option>
-</select><button onclick="addReview('reviews3','name3','text3','rating3')">Submit Review</button>
-
-</div><h3>Track / Cancel Order</h3><input type="text" id="trackId" placeholder="Order ID"><button onclick="trackOrder()">Track</button>
 <button onclick="cancelOrder()">Cancel</button>
 
-<div id="trackResult"></div><h3>My Orders</h3><button onclick="showOrders()">Show Orders</button>
+<div id="trackResult"></div></div><div class="popup" id="paymentPopup"><div class="popup-content"><h3>Customer Details</h3><input id="custName" placeholder="Name"><input id="custPhone" placeholder="Phone"><textarea id="custAddress" placeholder="Address"></textarea><p>UPI: vishaltiwari8960@ptaxis</p><button onclick="confirmPayment()">I Have Paid</button>
 
-<div id="orderList"></div></div><div class="popup" id="paymentPopup"><div class="popup-content"><h3>Customer Details</h3><input type="text" id="custName" placeholder="Name">
-<input type="text" id="custPhone" placeholder="Phone">
-<textarea id="custAddress" placeholder="Address"></textarea><p>UPI: vishaltiwari8960@ptaxis</p><button onclick="confirmPayment()">I Have Paid</button>
 <button onclick="closePopup()">Close</button>
 
-</div></div><div class="container"><h3>Contact Us</h3><p>📞 9721770053</p>
-<p>📧 vishaltiwarisidd@gmail.com</p></div><script>
+</div></div><script>
 
-let currentProduct,currentPrice,currentWeight,currentQty;
-let cart=[];
+/* OTP */
+
+let generatedOTP;
+
+function sendOTP(){
+
+generatedOTP=Math.floor(1000+Math.random()*9000);
+
+alert("Demo OTP: "+generatedOTP);
+
+document.getElementById("otpBox").style.display="block";
+
+}
+
+function verifyOTP(){
+
+let o=document.getElementById("otpInput").value;
+
+if(o==generatedOTP){
+
+localStorage.setItem("user","ok");
+
+document.getElementById("registerPage").style.display="none";
+
+}else{
+
+alert("Wrong OTP");
+
+}
+
+}
 
 window.onload=function(){
 
-let user=localStorage.getItem("storeUser");
-
-if(user){
-document.getElementById("registerPage").style.display="none";
-}
-
-}
-
-/* REGISTER */
-
-function registerUser(){
-
-let name=document.getElementById("regName").value;
-let phone=document.getElementById("regPhone").value;
-
-if(name==""||phone==""){
-alert("Fill details");
-return;
-}
-
-localStorage.setItem("storeUser",name);
+if(localStorage.getItem("user")){
 
 document.getElementById("registerPage").style.display="none";
 
 }
 
-/* TOTAL */
-
-function updateTotal(price,qtyId,totalId){
-
-let qty=document.getElementById(qtyId).value;
-
-document.getElementById(totalId).innerText=price*qty;
-
 }
+
 
 /* CART */
 
-function addToCart(name,price){
+let cart=[];
 
-cart.push({name,price});
+function addCart(name,price,qtyId){
 
-showCart();
+let qty=document.getElementById(qtyId).value;
 
-showToast("Added to cart");
+cart.push({name,price,qty});
+
+alert("Added to cart");
 
 }
 
 function showCart(){
 
 let html="";
-let total=0;
 
 cart.forEach(i=>{
-html+=i.name+" ₹"+i.price+"<br>";
-total+=i.price;
+
+html+=i.name+" Qty:"+i.qty+"<br>";
+
 });
 
-html+="<br>Total ₹"+total;
-
-document.getElementById("cartList").innerHTML=html;
+document.getElementById("panelResult").innerHTML=html;
 
 }
 
+
 /* PAYMENT */
 
-function openForm(product,price,weight,qtyId){
+let currentProduct,currentPrice,currentQty;
+
+function openForm(product,price,qtyId){
 
 currentProduct=product;
+
 currentPrice=price;
-currentWeight=weight;
 
 currentQty=document.getElementById(qtyId).value;
 
@@ -244,131 +219,21 @@ document.getElementById("paymentPopup").style.display="none";
 function confirmPayment(){
 
 let name=document.getElementById("custName").value;
-let phone=document.getElementById("custPhone").value;
-let address=document.getElementById("custAddress").value;
 
-if(name==""||phone==""||address==""){
-alert("Fill all details");
-return;
-}
+let total=currentPrice*currentQty;
 
-let delivery=50;
+let id="ORD"+Math.floor(Math.random()*100000);
 
-let total=(currentPrice*currentQty)+delivery;
+let data={product:currentProduct,total,status:"Processing"};
 
-let orderId="ORD"+Math.floor(Math.random()*100000);
+localStorage.setItem(id,JSON.stringify(data));
 
-let orderData={
-id:orderId,
-product:currentProduct,
-quantity:currentQty,
-total:total,
-status:"Processing"
-};
-
-localStorage.setItem(orderId,JSON.stringify(orderData));
-
-let msg="Order ID:"+orderId+
-"\nProduct:"+currentProduct+
-"\nQty:"+currentQty+
-"\nTotal:₹"+total;
-
-window.location.href="sms:9721770053?body="+encodeURIComponent(msg);
-
-window.open("https://wa.me/919721770053?text="+encodeURIComponent(msg));
-
-showToast("Order Placed "+orderId);
+alert("Order Placed "+id);
 
 closePopup();
 
 }
 
-/* TRACK */
-
-function trackOrder(){
-
-let id=document.getElementById("trackId").value;
-
-let order=localStorage.getItem(id);
-
-if(order){
-
-let d=JSON.parse(order);
-
-document.getElementById("trackResult").innerHTML=
-"Product:"+d.product+
-"<br>Status:"+d.status+
-"<br>Total:"+d.total;
-
-}else{
-
-document.getElementById("trackResult").innerHTML="Order not found";
-
-}
-
-}
-
-/* CANCEL */
-
-function cancelOrder(){
-
-let id=document.getElementById("trackId").value;
-
-let order=localStorage.getItem(id);
-
-if(order){
-
-let d=JSON.parse(order);
-
-d.status="Cancelled";
-
-localStorage.setItem(id,JSON.stringify(d));
-
-document.getElementById("trackResult").innerHTML="Order cancelled";
-
-}
-
-}
-
-/* REVIEW */
-
-function addReview(divId,nameId,textId,ratingId){
-
-let name=document.getElementById(nameId).value;
-let text=document.getElementById(textId).value;
-let rating=document.getElementById(ratingId).value;
-
-let div=document.getElementById(divId);
-
-div.innerHTML+="<div class='review-box'><b>"+name+"</b>: "+text+" "+rating+"</div>";
-
-}
-
-/* SEARCH */
-
-function searchProduct(){
-
-let input=document.getElementById("search").value.toLowerCase();
-
-let items=document.getElementsByClassName("product");
-
-for(let i=0;i<items.length;i++){
-
-let text=items[i].innerText.toLowerCase();
-
-items[i].style.display=text.includes(input)?"block":"none";
-
-}
-
-}
-
-/* DARK */
-
-function toggleDark(){
-
-document.body.classList.toggle("dark");
-
-}
 
 /* ORDER HISTORY */
 
@@ -378,35 +243,91 @@ let html="";
 
 for(let i=0;i<localStorage.length;i++){
 
-let key=localStorage.key(i);
+let k=localStorage.key(i);
 
-if(key.startsWith("ORD")){
+if(k.startsWith("ORD")){
 
-let d=JSON.parse(localStorage.getItem(key));
+let d=JSON.parse(localStorage.getItem(k));
 
-html+=key+" "+d.product+" ₹"+d.total+"<br>";
+html+=k+" "+d.product+" ₹"+d.total+"<br>";
+
+}
+
+}
+
+document.getElementById("panelResult").innerHTML=html;
+
+}
+
+
+/* TRACK */
+
+function trackOrder(){
+
+let id=document.getElementById("trackId").value;
+
+let o=localStorage.getItem(id);
+
+if(o){
+
+let d=JSON.parse(o);
+
+document.getElementById("trackResult").innerHTML=d.product+" "+d.status;
 
 }
 
 }
 
-document.getElementById("orderList").innerHTML=html;
+
+/* CANCEL */
+
+function cancelOrder(){
+
+let id=document.getElementById("trackId").value;
+
+let o=JSON.parse(localStorage.getItem(id));
+
+o.status="Cancelled";
+
+localStorage.setItem(id,JSON.stringify(o));
+
+document.getElementById("trackResult").innerHTML="Cancelled";
 
 }
 
-/* TOAST */
 
-function showToast(msg){
+/* REVIEW */
 
-let t=document.createElement("div");
+function addReview(divId,nameId,textId,ratingId){
 
-t.className="toast";
+let n=document.getElementById(nameId).value;
 
-t.innerText=msg;
+let t=document.getElementById(textId).value;
 
-document.body.appendChild(t);
+let r=document.getElementById(ratingId).value;
 
-setTimeout(()=>t.remove(),3000);
+let div=document.getElementById(divId);
+
+div.innerHTML+="<div class='review-box'><b>"+n+"</b>: "+t+" "+r+"</div>";
+
+}
+
+
+/* SEARCH */
+
+function searchProduct(){
+
+let s=document.getElementById("search").value.toLowerCase();
+
+let p=document.getElementsByClassName("product");
+
+for(let i=0;i<p.length;i++){
+
+let t=p[i].innerText.toLowerCase();
+
+p[i].style.display=t.includes(s)?"block":"none";
+
+}
 
 }
 
