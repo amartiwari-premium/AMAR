@@ -1,3 +1,68 @@
-<!DOCTYPE html><html><head><title>OTP Verification</title><link rel="stylesheet" href="style.css"><script src="script.js"></script></head><body><header>OTP Verification</header><div class="container"><p>Enter OTP sent to your phone</p><input id="otp" placeholder="Enter OTP"><button onclick="verifyOTP()">Verify OTP</button>
+<!DOCTYPE html><html>
+<head><meta name="viewport" content="width=device-width, initial-scale=1"><title>OTP Verification</title><style>
 
-</div></body></html>
+body{
+font-family:Arial;
+background:#f5f5f5;
+text-align:center;
+margin:0;
+}
+
+header{
+background:#4b2e2e;
+color:white;
+padding:15px;
+}
+
+.star{
+color:gold;
+font-size:20px;
+}
+
+.box{
+background:white;
+padding:20px;
+margin:40px auto;
+max-width:350px;
+border-radius:10px;
+box-shadow:0 5px 10px rgba(0,0,0,0.1);
+}
+
+input{
+width:90%;
+padding:10px;
+margin:10px;
+}
+
+button{
+background:#4b2e2e;
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:5px;
+}
+
+</style></head><body><header><div class="star">★★★★★</div><h2>Amar Premium Store</h2><div class="star">★★★★★</div></header><div class="box"><h3>OTP Verification</h3><p>Demo OTP: <b>1234</b></p><input id="otp" placeholder="Enter OTP"><br><button onclick="verify()">Verify</button>
+
+</div><script>
+
+function verify(){
+
+let otp=document.getElementById("otp").value
+
+if(otp=="1234"){
+
+alert("Login Successful")
+
+location.href="index.html"
+
+}else{
+
+alert("Wrong OTP")
+
+}
+
+}
+
+</script></body>
+</html>
