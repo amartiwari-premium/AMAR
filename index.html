@@ -140,63 +140,6 @@ box.innerHTML += "<p><b>"+name+"</b>: "+text+"</p>"
 
 
 
-function show(p){
-document.querySelectorAll(".page").forEach(x=>x.style.display="none")
-document.getElementById(p).style.display="block"
-}
-
-show("login")
-
-function sendOTP(){
-alert("OTP sent: 1234")
-show("otp")
-}
-
-function verifyOTP(){
-
-let otp=document.getElementById("otpbox").value
-
-if(otp=="1234"){
-alert("Login Successful")
-show("home")
-}else{
-alert("Wrong OTP")
-}
-
-}
-
-function login(){
-alert("OTP sent: 1234")
-show("otp")
-}
-
-function pay(){
-show("address")
-}
-
-function paid(){
-
-let msg="New Order Received - Amar Premium Store"
-
-window.location.href="sms:9721770053?body="+encodeURIComponent(msg)
-
-alert("Payment Confirmed!")
-
-show("home")
-
-}
-
-function addReview(){
-
-let name=document.getElementById("rname").value
-let text=document.getElementById("rtext").value
-
-let box=document.getElementById("reviews")
-
-box.innerHTML += "<p><b>"+name+"</b>: "+text+"</p>"
-
-}
-
 </script>
 
 </body>
