@@ -1,0 +1,30 @@
+<!DOCTYPE html><html><head><title>My Cart</title><link rel="stylesheet" href="style.css"><script src="script.js"></script></head><body onload="showCart()"><header>My Cart</header><div class="container"><div id="cart"></div></div><script>
+
+function showCart(){
+
+let cart=JSON.parse(localStorage.getItem("cart")||"[]")
+
+let box=document.getElementById("cart")
+
+box.innerHTML=""
+
+let total=0
+
+cart.forEach(c=>{
+
+box.innerHTML+=`
+<div class='card'>
+<b>${c.name}</b><br>
+Price ₹${c.price}
+</div>
+`
+
+total+=c.price
+
+})
+
+box.innerHTML+=`<h3>Total ₹${total}</h3>`
+
+}
+
+</script></body></html>
