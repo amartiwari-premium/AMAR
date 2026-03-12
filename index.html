@@ -1,19 +1,145 @@
+<!DOCTYPE html><html>
+<head><meta name="viewport" content="width=device-width, initial-scale=1"><title>Amar Premium Store</title><style>
 
-<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="style.css"><script src="script.js"></script><title>Amar Premium Store</title></head><body><header>Amar Premium Store ⭐⭐⭐⭐⭐</header><div class="container"><a href="cart.html">My Cart</a> |
-<a href="orders.html">My Orders</a> |
-<a href="history.html">History</a> |
-<a href="track.html">Track Order</a>
+body{
+font-family:Arial;
+margin:0;
+background:#f5f5f5;
+}
 
-<div class="card"><img src="product.png"><h3>Amar Coffee Powder</h3><p>₹299</p><button onclick="addCart('Coffee Powder',299)">Add Cart</button>
+header{
+background:#4b2e2e;
+color:white;
+padding:15px;
+text-align:center;
+font-size:22px;
+}
 
-<button onclick="buyNow('Coffee Powder',299)">Buy Now</button>
+.container{
+padding:15px;
+max-width:900px;
+margin:auto;
+}
 
-</div><div class="card"><img src="kalanamak.png"><h3>Amar Kalanamak Rice</h3><p>₹899</p><button onclick="addCart('Kalanamak Rice',899)">Add Cart</button>
+.card{
+background:white;
+padding:15px;
+border-radius:10px;
+margin-bottom:20px;
+box-shadow:0 5px 10px rgba(0,0,0,0.1);
+}
 
-<button onclick="buyNow('Kalanamak Rice',899)">Buy Now</button>
+.card img{
+width:100%;
+border-radius:10px;
+}
 
-</div><div class="card"><img src="basmati.png"><h3>Amar Basmati Rice</h3><p>₹699</p><button onclick="addCart('Basmati Rice',699)">Add Cart</button>
+button{
+background:#4b2e2e;
+color:white;
+border:none;
+padding:10px 15px;
+border-radius:5px;
+margin-top:8px;
+}
 
-<button onclick="buyNow('Basmati Rice',699)">Buy Now</button>
+input,textarea{
+width:100%;
+padding:10px;
+margin:8px 0;
+border-radius:5px;
+border:1px solid #ccc;
+}
 
-</div><div class="card"><h3>UPI QR Payment</h3><img src="qr.png"></div></div></body></html>
+.page{
+display:none;
+}
+
+footer{
+background:#4b2e2e;
+color:white;
+padding:20px;
+text-align:center;
+margin-top:40px;
+}
+
+</style></head><body><header>Amar Premium Store</header><div class="container"><!-- REGISTER --><div id="register" class="page"><h3>Register</h3><input placeholder="Full Name"><input placeholder="Phone Number"><input placeholder="Password"><button onclick="show('otp')">Register</button>
+
+<p>Already account? <a href="#" onclick="show('login')">Login</a></p></div><!-- OTP --><div id="otp" class="page"><h3>OTP Verification</h3><p>Demo OTP: 1234</p><input id="otpbox" placeholder="Enter OTP"><button onclick="verifyOTP()">Verify</button>
+
+</div><!-- LOGIN --><div id="login" class="page"><h3>Login</h3><input placeholder="Phone"><input placeholder="Password"><button onclick="show('home')">Login</button>
+
+<p>No account? <a href="#" onclick="show('register')">Register</a></p></div><!-- HOME --><div id="home" class="page"><h2>Products</h2><div class="card"><img src="product.png"><h3>Coffee Powder</h3><p>₹299</p><label>Quantity</label>
+
+<input type="number" value="1" min="1"><button onclick="pay()">Pay Now</button>
+
+</div><div class="card"><img src="kalanamak.png"><h3>Kalanamak Rice</h3><p>₹899</p><label>Quantity</label>
+
+<input type="number" value="1" min="1"><button onclick="pay()">Pay Now</button>
+
+</div><div class="card"><img src="basmati.png"><h3>Basmati Rice</h3><p>₹699</p><label>Quantity</label>
+
+<input type="number" value="1" min="1"><button onclick="pay()">Pay Now</button>
+
+</div><h3>Customer Reviews</h3><input id="rname" placeholder="Your Name"><textarea id="rtext" placeholder="Write Review"></textarea><button onclick="addReview()">Submit Review</button>
+
+<div id="reviews"></div></div><!-- ADDRESS --><div id="address" class="page"><h3>Delivery Address</h3><input placeholder="Full Name"><input placeholder="Phone"><textarea placeholder="Full Address"></textarea><button onclick="show('payment')">Continue Payment</button>
+
+</div><!-- PAYMENT --><div id="payment" class="page"><h3>Scan QR and Pay</h3><img src="qr.png" width="200"><br><br>
+
+<button onclick="paid()">I Have Paid</button>
+
+</div></div><footer><h3>Amar Premium Store</h3><p>Healthy & Premium Products</p><p>Email: vishaltiwarisidd@gmail.com@gmail.com</p><p>Phone: 9721770053</p><p>© 2026 Amar Premium Store</p></footer><script>
+
+function show(p){
+
+document.querySelectorAll(".page").forEach(x=>x.style.display="none")
+
+document.getElementById(p).style.display="block"
+
+}
+
+show("register")
+
+function verifyOTP(){
+
+if(document.getElementById("otpbox").value=="1234"){
+
+show("home")
+
+}else{
+
+alert("Wrong OTP")
+
+}
+
+}
+
+function pay(){
+
+show("address")
+
+}
+
+function paid(){
+
+alert("Payment Confirmed!")
+
+show("home")
+
+}
+
+function addReview(){
+
+let name=document.getElementById("rname").value
+
+let text=document.getElementById("rtext").value
+
+let box=document.getElementById("reviews")
+
+box.innerHTML += "<p><b>"+name+"</b>: "+text+"</p>"
+
+}
+
+</script></body></html>
+
